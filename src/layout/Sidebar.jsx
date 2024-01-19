@@ -1,4 +1,12 @@
+import { useNavigate } from "react-router-dom";
+
 export default function Sidebar() {
+  const navigate = useNavigate();
+  function handleLogout() {
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("refresh_token");
+    navigate("/login");
+  }
   return (
     <div id='layoutSidenav_nav'>
       <nav
@@ -152,8 +160,9 @@ export default function Sidebar() {
           </div>
         </div>
         <div className='sb-sidenav-footer'>
-          <div className='small'>Logged in as:</div>
-          Start Bootstrap
+          <button className='btn btn-danger' onClick={handleLogout}>
+            Logout
+          </button>
         </div>
       </nav>
     </div>

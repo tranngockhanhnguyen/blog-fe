@@ -1,12 +1,6 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Sidebar() {
-  const navigate = useNavigate();
-  function handleLogout() {
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("refresh_token");
-    navigate("/login");
-  }
   return (
     <div id='layoutSidenav_nav'>
       <nav
@@ -16,12 +10,12 @@ export default function Sidebar() {
         <div className='sb-sidenav-menu'>
           <div className='nav'>
             <div className='sb-sidenav-menu-heading'>Core</div>
-            <a className='nav-link' href='index.html'>
+            <Link className='nav-link' to='/'>
               <div className='sb-nav-link-icon'>
                 <i className='fas fa-tachometer-alt'></i>
               </div>
               Dashboard
-            </a>
+            </Link>
             <div className='sb-sidenav-menu-heading'>Interface</div>
             <a
               className='nav-link collapsed'
@@ -32,9 +26,9 @@ export default function Sidebar() {
               aria-controls='collapseLayouts'
             >
               <div className='sb-nav-link-icon'>
-                <i className='fas fa-columns'></i>
+                <i className='fas fa-user'></i>
               </div>
-              Layouts
+              Users
               <div className='sb-sidenav-collapse-arrow'>
                 <i className='fas fa-angle-down'></i>
               </div>
@@ -46,12 +40,12 @@ export default function Sidebar() {
               data-bs-parent='#sidenavAccordion'
             >
               <nav className='sb-sidenav-menu-nested nav'>
-                <a className='nav-link' href='layout-static.html'>
-                  Static Navigation
-                </a>
-                <a className='nav-link' href='layout-sidenav-light.html'>
-                  Light Sidenav
-                </a>
+                <Link className='nav-link' to='/users'>
+                  User List
+                </Link>
+                <Link className='nav-link' to='/users/create'>
+                  Add
+                </Link>
               </nav>
             </div>
             <a
@@ -65,7 +59,7 @@ export default function Sidebar() {
               <div className='sb-nav-link-icon'>
                 <i className='fas fa-book-open'></i>
               </div>
-              Pages
+              Posts
               <div className='sb-sidenav-collapse-arrow'>
                 <i className='fas fa-angle-down'></i>
               </div>
@@ -88,29 +82,8 @@ export default function Sidebar() {
                   aria-expanded='false'
                   aria-controls='pagesCollapseAuth'
                 >
-                  Authentication
-                  <div className='sb-sidenav-collapse-arrow'>
-                    <i className='fas fa-angle-down'></i>
-                  </div>
+                  Post List
                 </a>
-                <div
-                  className='collapse'
-                  id='pagesCollapseAuth'
-                  aria-labelledby='headingOne'
-                  data-bs-parent='#sidenavAccordionPages'
-                >
-                  <nav className='sb-sidenav-menu-nested nav'>
-                    <a className='nav-link' href='login.html'>
-                      Login
-                    </a>
-                    <a className='nav-link' href='register.html'>
-                      Register
-                    </a>
-                    <a className='nav-link' href='password.html'>
-                      Forgot Password
-                    </a>
-                  </nav>
-                </div>
                 <a
                   className='nav-link collapsed'
                   href='#'
@@ -119,50 +92,15 @@ export default function Sidebar() {
                   aria-expanded='false'
                   aria-controls='pagesCollapseError'
                 >
-                  Error
-                  <div className='sb-sidenav-collapse-arrow'>
-                    <i className='fas fa-angle-down'></i>
-                  </div>
+                  Add
                 </a>
-                <div
-                  className='collapse'
-                  id='pagesCollapseError'
-                  aria-labelledby='headingOne'
-                  data-bs-parent='#sidenavAccordionPages'
-                >
-                  <nav className='sb-sidenav-menu-nested nav'>
-                    <a className='nav-link' href='401.html'>
-                      401 Page
-                    </a>
-                    <a className='nav-link' href='404.html'>
-                      404 Page
-                    </a>
-                    <a className='nav-link' href='500.html'>
-                      500 Page
-                    </a>
-                  </nav>
-                </div>
               </nav>
             </div>
-            <div className='sb-sidenav-menu-heading'>Addons</div>
-            <a className='nav-link' href='charts.html'>
-              <div className='sb-nav-link-icon'>
-                <i className='fas fa-chart-area'></i>
-              </div>
-              Charts
-            </a>
-            <a className='nav-link' href='tables.html'>
-              <div className='sb-nav-link-icon'>
-                <i className='fas fa-table'></i>
-              </div>
-              Tables
-            </a>
           </div>
         </div>
         <div className='sb-sidenav-footer'>
-          <button className='btn btn-danger' onClick={handleLogout}>
-            Logout
-          </button>
+          <div className='small'>Logged in as:</div>
+          Start Bootstrap
         </div>
       </nav>
     </div>
